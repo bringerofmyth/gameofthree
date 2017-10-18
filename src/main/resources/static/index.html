@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+</head>
+
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+
+<div id="main-content" class="container">
+    <div class="row">
+        <h4 id="status_text">Hello! Please Enter A Username</h4>
+    </div>
+    <p></p>
+    <div class="row">
+        <h4 id="player_text"></h4>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="row" id="create_player_view">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Username here...">
+                    </div>
+                    <button id="register" class="btn btn-default" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+        <p></p>
+        <div class="row" id="create_view" hidden="true">
+            <div class="col-md-6">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="game_name">Game Name</label>
+                        <input type="text" id="game_name" class="form-control" placeholder="Game name here...">
+                    </div>
+                    <button id="create" class="btn btn-default" type="submit">Create Game</button>
+                </form>
+            </div>
+        </div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <div class="row" id="game_join" hidden="true">
+            <div class="col-md-2">
+                <label for="game_list">Game List</label>
+            </div>
+            <div class="col-md-2">
+                <select name="game_list" id="game_list"> </select>
+            </div>
+            <div class="col-md-2">
+                <form class="form-inline">
+                    <button id="join" class="btn btn-default" type="submit" disabled="true">Join Game</button>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <form class="form-inline">
+                    <button id="list" class="btn btn-default" type="submit">List Games</button>
+                </form>
+            </div>
+        </div>
+        <p></p>
+        <div class="row" id="start_view" hidden="true">
+            <div class="col-md-2">
+                <form class="form-inline">
+                    <button id="start" class="btn btn-default" type="submit">Start Game</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <div class="row" id="move_list_view" hidden="true">
+        <div class="col-md-4">
+            <label for="move_list">Select a Number To Move</label>
+        </div>
+        <div class="col-md-2">
+            <select name="move_list" id="move_list">
+                <option value="-1">-1</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <form class="form-inline">
+                <button id="move" class="btn btn-default" type="submit">Move</button>
+            </form>
+        </div>
+
+        <div class="col-md-3">
+            <label for="auto_mode">Auto Play</label>
+            <input type="checkbox" id="auto_mode">
+        </div>
+
+    </div>
+    <p></p>
+    <p></p>
+    <div class="row" id="game_log" hidden="true">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Game Log</th>
+                </tr>
+                </thead>
+                <tbody id="game_messages">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
